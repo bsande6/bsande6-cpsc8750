@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 // world wide web).
 const port = process.env.PORT || 3000;
 
-var nextVisitorId = 0
+var nextVisitorId = 1
 var last_visit = 0
 // The main page of our website
 app.get('/', (req, res) => {
@@ -36,14 +36,13 @@ app.get('/', (req, res) => {
   }
  
   res.cookie('visited', Date.now().toString());
-  console.log(Date().toLocaleString())
+  
   res.render('welcome', {
     name: req.query.name || "World",
     Date: req.query.Date || Date().toLocaleString(),
     id: req.query.id ||  req.cookies['visitorId'],
     output: req.query.output || output
   });
-  console.log(req.cookies)
 });
 
 // Start listening for network connections
